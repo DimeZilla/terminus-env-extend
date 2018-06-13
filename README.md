@@ -24,7 +24,7 @@ $ terminus mysql [site].[env]
 This will open the mysql interactive shell.
 
 ```
-$ terminus mysql [site].[env] "[SQL COMMAND]"
+$ terminus mysql [site].[env] -- "[SQL COMMAND]"
 ```
 This will run the sql command and print the output.
 

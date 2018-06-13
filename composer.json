@@ -1,0 +1,17 @@
+{
+    "name": "dimezilla/terminus-mysql",
+    "description": "Gets a pantheon site's sql connection command from the site info and executes it",
+    "type": "terminus-plugin",
+    "authors": [
+        {
+            "name": "dimezilla",
+            "email": "diamond.joshh@gmail.com"
+        }
+    ],
+    "extra": {
+        "terminus": {
+            "compatible-version": "^1"
+        }
+    },
+    "require": {}
+}

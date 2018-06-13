@@ -2,6 +2,9 @@
 
 A terminus plugin that will locally run mysql commands on your site environment's databases.
 
+# NOT ACTIVELY SUPPORTED
+See [terminus pancakes](https://github.com/terminus-plugin-project/terminus-pancakes-plugin)
+
 ## Requirments
 
 This plugin requires a local mysql-cli installation. On Ubuntu run:

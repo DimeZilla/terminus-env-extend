@@ -68,6 +68,7 @@ class RemoteSqlCommand extends TerminusCommand implements SiteAwareInterface, Co
     protected function prepareEnvironment($site_id)
     {
         list($this->site, $this->environment) = $this->getSiteEnv($site_id);
+        $this->environment->wake();
     }
 
     /**

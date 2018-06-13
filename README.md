@@ -1,6 +1,6 @@
 # TERMINUS MYSQL
 
-A terminus plugin that will locally run mysql commands on your site environments databases.
+A terminus plugin that will locally run mysql commands on your site environment's databases.
 
 ## Requirments
 
@@ -26,7 +26,8 @@ This will open the mysql interactive shell.
 ```
 $ terminus mysql [site].[env] "[SQL COMMAND]"
 ```
-This will run the sql command and print the output. Example:
+This will run the sql command and print the output.
+
 
 # Help
 

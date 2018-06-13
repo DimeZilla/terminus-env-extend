@@ -1,6 +1,6 @@
 # TERMINUS MYSQL
 
-A terminus plugin that will run locally run mysql commands on your site environments databases.
+A terminus plugin that will locally run mysql commands on your site environments databases.
 
 ## Requirments
 

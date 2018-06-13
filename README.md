@@ -37,4 +37,7 @@ $ terminus help mysql
 Otherwise please refer to the [terminus docs](https://pantheon.io/docs/terminus/).
 
 
+# Support
+Please report any issues here. I'll get to them as I can. Feel free to fork and make your own.
+
 Thanks and I hope you enjoy

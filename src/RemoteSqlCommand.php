@@ -88,7 +88,7 @@ class RemoteSqlCommand extends TerminusCommand implements SiteAwareInterface, Co
         }
 
         $command = join(" ", [$this->command, $command]);
-        // $result = $this->environment->sendCommandViaSsh($command, $echoOutput, $useTty);
+
         $result = $this->execCommand($command, $echoOutput, $useTty);
         $output = $result['output'];
         $exit = $result['exit_code'];

@@ -3,10 +3,7 @@
 use Pantheon\Terminus\Commands\TerminusCommand;
 use Pantheon\Terminus\Site\SiteAwareInterface;
 use Pantheon\Terminus\Site\SiteAwareTrait;
-use Pantheon\Terminus\Exceptions\TerminusException;
 use Pantheon\Terminus\Exceptions\TerminusProcessException;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Process\ProcessUtils;
 use League\Container\ContainerAwareTrait;
 use League\Container\ContainerAwareInterface;
 use Pantheon\Terminus\Helpers\LocalMachineHelper;

@@ -2,9 +2,12 @@
 
 A terminus plugin that will locally run mysql commands on your site environment's databases. This plugin was built in bash on Windows and should work in any linux environment that has mysql-cli and sftp.
 
-# Other plugins with similar functions:
+# Other Places to get this functionality:
+Unfortunately, others beat me to these ideas so I probably wont owrk too hard on supporting this particular plugin.
 
-See [terminus pancakes](https://github.com/terminus-plugin-project/terminus-pancakes-plugin)
+For mysql connections See [terminus pancakes](https://github.com/terminus-plugin-project/terminus-pancakes-plugin)
+
+For the sftp connection See [terminus filer](https://github.com/terminus-plugin-project/terminus-filer-plugin)
 
 ## Requirments
 

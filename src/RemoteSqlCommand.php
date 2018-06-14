@@ -24,11 +24,11 @@ class RemoteSqlCommand extends TerminusCommand implements SiteAwareInterface, Co
     protected $site;
 
     /**
-     * [mysq] Gets the mysql command string from the environment and runs it.
+     * [env:mysq] Gets the mysql command string from the environment and runs it.
      *
      * @authorise
      *
-     * @command mysql
+     * @command env:mysql
      *
      * @param  string $site_env The Site Environment in the `site_name.env` format
      * @param string $sql_command  The sql statement to run on the remote
@@ -36,21 +36,68 @@ class RemoteSqlCommand extends TerminusCommand implements SiteAwareInterface, Co
      */
     public function mysqlCommand($site_env, $sql_command = "")
     {
-
         $this->prepareEnvironment($site_env);
 
+        $site_label = $this->getSiteLabel();
+        $this->log()->notice('Connecting to the mysql database for ' . $site_label);
+        $command = $this->getCommand('mysql_command');
+        if (!empty($sql_command)) {
+            $command .= ' -e "' . $sql_command . '"';
+        }
+
+        return $this->runCommand($command);
+    }
+
+    /**
+     * gets the site label that we want to display in logs
+     * @return string
+     */
+    protected function getSiteLabel()
+    {
+        return $this->site->get('name') . '\'s ' . $this->environment->id . ' environment';
+    }
+
+    /**
+     * [env:sftp] Gets the sftp command string from the environment and runs it.
+     *
+     * @authorise
+     *
+     * @command env:sftp
+     *
+     * @param  string $site_env The Site Environment in the `site_name.env` format
+     * @usage terminus env:sftp <site>.<env>
+     */
+    public function sftpCommand($site_env)
+    {
+        $this->prepareEnvironment($site_env);
+        $site_label = $this->getSiteLabel();
+        $this->log()->notice('Establishing sftp connection to ' . $site_label);
+        $command = $this->getCommand('sftp_command');
+        return $this->runCommand($command);
+    }
+
+    /**
+     * Gets from the site environment the full command string
+     * @param  string $command_name  the key name of the command in the connection info
+     * @return string
+     */
+    protected function getCommand($command_name = '')
+    {
         // get the full mysql command from the connection info
         $info = $this->environment->connectionInfo();
 
-        $site_label = $this->site->get('name') . '\'s ' . $this->environment->id . ' environment';
-        $this->log()->notice('Connecting to the mysql database for ' . $site_label);
+        return $info[$command_name];
+    }
 
-        if (!empty($info['mysql_command'])) {
-            $command = str_replace($this->command . " ","", $info['mysql_command']);
-            if (!empty($sql_command)) {
-                $command .= ' -e "' . $sql_command . '"';
-            }
-            $this->log()->notice($command);
+    /**
+     * executes the command and if no command was passed we couldn't get the info
+     * so it throws a terminus exception
+     * @param  string $command  the command to run
+     * @return void really
+     */
+    protected function runCommand($command = '')
+    {
+        if (!empty($command)) {
             return $this->executeCommand($command);
         }
 
@@ -86,8 +133,6 @@ class RemoteSqlCommand extends TerminusCommand implements SiteAwareInterface, Co
                 $output->write($buffer);
             };
         }
-
-        $command = join(" ", [$this->command, $command]);
 
         $result = $this->execCommand($command, $echoOutput, $useTty);
         $output = $result['output'];

@@ -1,8 +1,9 @@
-# TERMINUS MYSQL
+# Terminus Environment Extend Plugin
 
-A terminus plugin that will locally run mysql commands on your site environment's databases.
+A terminus plugin that will locally run mysql commands on your site environment's databases. This plugin was built in bash on Windows and should work in any linux environment that has mysql-cli and sftp.
 
-# NOT ACTIVELY SUPPORTED
+# Other plugins with similar functions:
+
 See [terminus pancakes](https://github.com/terminus-plugin-project/terminus-pancakes-plugin)
 
 ## Requirments
@@ -21,15 +22,22 @@ Download this project and install it in your `$HOME/.terminus/plugins/` folder
 
 ## How to use
 
+To open the mysql-cli connection or to pass a SQL command use the following:
+
 ```
-$ terminus mysql [site].[env]
+$ terminus env:mysql [site].[env]
 ```
 This will open the mysql interactive shell.
 
 ```
-$ terminus mysql [site].[env] -- "[SQL COMMAND]"
+$ terminus env:mysql [site].[env] -- "[SQL COMMAND]"
 ```
 This will run the sql command and print the output.
+
+To open the sftp connection use the following:
+```
+terminus env:sftp [site].[env]
+```
 
 
 # Help
